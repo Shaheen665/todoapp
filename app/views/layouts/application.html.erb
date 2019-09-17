@@ -12,6 +12,20 @@
   </head>
 
   <body>
+  <div class="topnav">
+    <% if user_signed_in? -%>
+      <ul class="nav navbar-nav pull-right">
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+        <%= link_to 'Account', edit_user_registration_path %>
+
+      </ul>
+    <% else -%>
+      <ul class="nav navbar-nav pull-right">
+        <%= link_to 'Sign up', new_user_registration_path %>
+        <%= link_to 'Sign in', new_user_session_path %>
+      </ul>
+    <% end -%>
+  </div>
   <div class="container">
     <%= yield %>
   </div>
